@@ -1,4 +1,4 @@
-#include "libprg/libprg.h"
+#include "../include/libprg/libprg.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -51,7 +51,11 @@
         return s->n_elem;
     }
 
-
+    void print_stack(Stack *s){
+        for(int i=0; i<s->n_elem;i++){
+            printf("%d ", s->values[i]);
+        }
+    }
 
     void destroy_stack(Stack *s){
         free(s->values);

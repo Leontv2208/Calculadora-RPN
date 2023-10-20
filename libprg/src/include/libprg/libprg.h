@@ -46,6 +46,7 @@ int stack_pop(Stack *s);
 int stack_size(Stack *s);
 bool stack_is_empty(Stack *s);
 bool stack_is_full(Stack *s);
+void print_stack(Stack *s);
 void destroy_stack(Stack *s);
 
 typedef enum { SUM, SUB } operation_t;
