@@ -1,28 +1,27 @@
 #include "calculadora.h"
 #include <stdio.h>
+#include <string.h>
+
+#define MAX_SIZE 50
 
 int main() {
-    int x;
-    char y;
-    Stack a;
-    create_stack(&a, 3);
 
+    Stack rpn;
+    create_stack(&rpn, 3);
 
-    for(int i=0; i<3; i++){
-    scanf("%d%1c", &x, &y);
-    stack_push(&a, x);
+    char entry[MAX_SIZE];
 
-    print_stack(&a);
-    printf("%c\n", y);
+    printf("Entre com os valores: ");
+    gets(entry);
+
+    int t = strlen(entry);
+    char *token = strtok(entry, " ");
+
+    while(token != NULL){
+        printf("%s\n",  token);
+        token = strtok(NULL, " ");
     }
 
-    switch (y) {
-
-    }
+    destroy_stack(&rpn);
     return 0;
-
-
-
-
-
 }
