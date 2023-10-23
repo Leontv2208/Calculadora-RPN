@@ -1,27 +1,42 @@
 #include "calculadora.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
-#define MAX_SIZE 50
+#define MAX_SIZE 25
 
 int main() {
 
     Stack rpn;
-    create_stack(&rpn, 3);
+    create_stack(&rpn, MAX_SIZE);
+    char entry[MAX_SIZE*3];
+    while(true) {
 
-    char entry[MAX_SIZE];
 
-    printf("Entre com os valores: ");
-    gets(entry);
+        printf("Entre com os valores: ");
+        gets(entry);
 
-    int t = strlen(entry);
-    char *token = strtok(entry, " ");
+        char *token = strtok(entry, " ");
 
-    while(token != NULL){
-        printf("%s\n",  token);
-        token = strtok(NULL, " ");
+        if (strcmp(token, "end") == 0){
+            goto end;
+        }
+
+        while (token != NULL) {
+            printf("%s\n", token);
+            if(strcmp(token, "+") == 0 || strcmp(token, "-") == 0 ||strcmp(token, "/") == 0 ||strcmp(token, "*") == 0 ){
+                check_op(&rpn, *token);
+            }
+            if (strcmp(token, "+") == 1 && strcmp(token, "-") == 1 && strcmp(token, "/") == 1 &&
+                strcmp(token, "*") == 1) {
+                stack_push(&rpn, atoi(token));
+            }
+            token = strtok(NULL, " ");
+            print_stack(&rpn);
+        }
+
     }
-
     destroy_stack(&rpn);
-    return 0;
+    end: return 0;
+
 }

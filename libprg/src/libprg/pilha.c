@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
     void create_stack(Stack *s, int max_size) {
-        s->values = malloc(sizeof (int)*max_size);
+        s->values = malloc(sizeof (D) * max_size);
         if(s->values==NULL){
             printf("Falha na alocação de memória");
             exit(1);
@@ -30,7 +30,7 @@
         }
     }
 
-    void stack_push(Stack *s, int n){
+    void stack_push(Stack *s, D n){
         if(stack_is_full(s)==false){
         s->top++;
         s->values[s->top] = n;
@@ -38,10 +38,10 @@
         }
     }
 
-    int stack_pop(Stack *s){
+    D stack_pop(Stack *s){
         if (stack_is_empty(s)==false) {
             s->n_elem--;
-            int x = s->values[s->top];
+            D x = s->values[s->top];
             s->top--;
             return x;
         }
@@ -53,8 +53,9 @@
 
     void print_stack(Stack *s){
         for(int i=0; i<s->n_elem;i++){
-            printf("%d ", s->values[i]);
+            printf(" %d |", s->values[i]);
         }
+        printf("\n");
     }
 
     void destroy_stack(Stack *s){

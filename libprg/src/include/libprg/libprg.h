@@ -2,6 +2,8 @@
 #define LIBPRG_LIBPRG_H
 #include <stdbool.h>
 
+#define D int
+
 typedef struct {
     double value;
     int error;
@@ -34,15 +36,15 @@ void create_queue(Queue *q, int size);
 void print_queue(Queue *q);
 
 typedef struct{
-    int *values;
+    D *values;
     int top;
     int n_elem;
     int max_size;
 } Stack;
 
 void create_stack(Stack *s, int max_size);
-void stack_push(Stack *s, int n);
-int stack_pop(Stack *s);
+void stack_push(Stack *s, D n);
+D stack_pop(Stack *s);
 int stack_size(Stack *s);
 bool stack_is_empty(Stack *s);
 bool stack_is_full(Stack *s);
