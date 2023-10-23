@@ -2,9 +2,12 @@
 #define CALCULADORA_RPN_CALCULADORA_H
 #include "libprg/src/include/libprg/libprg.h"
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
+//Funçao que verifica o tipo de operação que deverá ser realizada pela calculadora
 void check_op(Stack *s, char op){
-    double x, y;
+    D x, y;
 
     switch (op) {
         case '+':
@@ -28,10 +31,6 @@ void check_op(Stack *s, char op){
             stack_push(s, y/x);
             break;
     }
-
-
 }
-
-
 
 #endif //CALCULADORA_RPN_CALCULADORA_H
