@@ -30,9 +30,8 @@ int main() {
             //Condicional: Se for detectado {+, -, *, /} atravez de strcmp, o programa executa a função check_op
             if(strcmp(token, "+") == 0 || strcmp(token, "-") == 0 || strcmp(token, "/") == 0 || strcmp(token, "*") == 0 ){
                 check_op(&rpn, *token);
-            }
-            //Condicional: Se não for um sinal de operação, o valor será adicionado a pilha
-            if (strcmp(token, "+") == 1 && strcmp(token, "-") == 1 && strcmp(token, "/") == 1 && strcmp(token, "*") == 1) {
+            } else {
+                //caso não seja um caractere de operação, o elemento lido será adicionado a pilha
                 stack_push(&rpn, atoi(token));
             }
             //lê o ponteiro da posição atual, até o próximo delimitador
